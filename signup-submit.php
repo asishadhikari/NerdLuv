@@ -40,8 +40,7 @@
         $ERR[] = "Name should be valid character string";
     } 
 
-    print("length of User name is ".count($_POST['name']).$_POST['name'].ord());
-
+    print("THe strings are same result is..".strcmp($_POST['name'], ''));
 
     $full_name = explode(" ", $user["name"]); //delimited space
     for ($i = 0; $i < count($full_name); $i++) {
