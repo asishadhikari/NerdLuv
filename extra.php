@@ -31,7 +31,7 @@ function error_exit($message = "") {
 	
 	<?php
 
-	include("../html/bottom.html");
+	include("bottom.html");
 	exit(1);
 }
 ?>
