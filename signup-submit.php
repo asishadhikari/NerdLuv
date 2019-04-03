@@ -55,8 +55,31 @@ for ($i = 0; $i < count($full_name); $i++) {
 }
 
 //age validation
-if (!is_numeric($usr["age"])) {
-    $errors[] = "Age is not a number.";
+if (!is_numeric($usr["age"]) || (int) $usr >= 200 ) {
+    $ERR = "Age must be a sensible number!";
 }
+
+if (preg_match("/[I|E][S|N][F|T][J|P]/", $_POST['persona_type']) != 1) {
+    $ERR[] = "Make sure the personality type exists!!"
+}
+
+if (!is_numeric($_POST["min_seek_age"]) || (int) $_POST['min_seek_age'] >=200 ) {
+    $ERR[] = "Minimum Age sought must be a number!";
+}
+
+if (!is_numeric($_POST["max_seek_age"])) {
+    $ERR[] = "Maximum age sought must be a number.";
+}
+
+
+<?php
+    foreach ($errors as $error) {
 ?>
+            <li><?= $error ?> </li>
+    <?php } ?>
+        </ul>
+    </div>
+
+
+
 <?php include("bottom.html"); ?>
