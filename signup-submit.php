@@ -69,6 +69,11 @@
         $ERR[] = "Maximum age sought must be a number.";
     }
 
+    if (isset($usr['min_seek_age']) && isset($usr['max_seek_age'])){
+        if( (int) $min_seek_age) > (int) $max_seek_age){
+            $ERR[] = "Your seeking age is inconsistent!";
+        }
+    }
     ?>
 
     <!-- Input validation done -->
