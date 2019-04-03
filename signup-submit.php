@@ -35,10 +35,34 @@
         $usr['max_seek_age'] = ($_POST['max_seek_age']);
     }
 
-//full name validation
-    if ( preg_match(" /[^a-zA-Z\s]/ ", $_POST["name"]) == 1) {
-        $ERR = "Name can only contain alphabets"
-    } 
+
+    
+    $full_name = explode(" ", $user["name"]); //delimited space
+    for ($i = 0; $i < count($full_name); $i++) {
+        //check if all words are capitalized
+        if(strcmp(ucfirst($full_name[$i]),$full_name[$i]) !== 0) {
+            $ERR = "Every First Letter Must Be Capital!";
+            break;
+        }
+    }
+
+    //age validation
+    if (!is_numeric($usr["age"]) || (int) $usr >= 200 ) {
+        $ERR = "Age must be a sensible number!";
+    }
+
+    if (preg_match("/[I|E][S|N][F|T][J|P]/", $_POST['persona_type']) != 1) {
+        $ERR[] = "Make sure the personality type exists!!"
+    }
+
+    if (!is_numeric($_POST["min_seek_age"]) || (int) $_POST['min_seek_age'] >=200 ) {
+        $ERR[] = "Minimum Age sought must be a number!";
+    }
+
+    if (!is_numeric($_POST["max_seek_age"])) {
+        $ERR[] = "Maximum age sought must be a number.";
+    }
+
 
 
 ?>
