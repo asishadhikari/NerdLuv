@@ -17,6 +17,7 @@
             <strong class="column">Age:</strong>
             <input type="text" name="age" size="6" maxlength="2"><br>
 
+            <strong class="column">Personality Type:</strong>
             <input type="text" name="personality_type" size="6" maxlength="4"><br>
 
             <strong class="column">Favorite OS:</strong>
