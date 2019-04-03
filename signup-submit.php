@@ -42,6 +42,9 @@
 
 
     $full_name = explode(" ", $user["name"]); //delimited space
+    if (empty($full_name)){
+        $ERR[] = "Name cannot be empty!!";
+    }
     for ($i = 0; $i < count($full_name); $i++) {
         //check if all words are capitalized
         if(strcmp(ucfirst($full_name[$i]),$full_name[$i]) !== 0) {
