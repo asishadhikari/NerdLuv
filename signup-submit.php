@@ -36,17 +36,12 @@
     }
 
     //full name validation
-    if ( preg_match(" /[^a-zA-Z\s]/ ", $_POST["name"]) === 1) {
-        $ERR[] = "Name can only contain alphabets";
+    if ( preg_match(" /[^a-zA-Z\s]/ ", $_POST["name"]) === 1 || preg_match("\s", $_POST['name'])) {
+        $ERR[] = "Name should be non empty alphabet string";
     } 
 
 
     $full_name = explode(" ", $user["name"]); //delimited space
-    if (count($full_name)===0){
-        $ERR[] = "Name cannot be empty!!";
-    }
-
-    print("Num elements in full name".count($full_name));
     for ($i = 0; $i < count($full_name); $i++) {
         //check if all words are capitalized
         if(strcmp(ucfirst($full_name[$i]),$full_name[$i]) !== 0) {
