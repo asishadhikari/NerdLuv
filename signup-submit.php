@@ -1,6 +1,17 @@
 <?php include("top.html"); ?>
 <?php
 
+    $ERR = array();
+    $usr = array(
+        'name' => '',
+        'gender' => '',
+        'age' => '',
+        'persona_type' => '',
+        'fav_os' => '',
+        'min_seek_age' => '',
+        'max_seek_age' => ''
+    );
+
     /*Extract data from post request (associative array)*/
     if(isset($_POST['name'])) {
         $usr['name'] = urlencode($_POST['name']);
@@ -26,7 +37,7 @@
 
 
     //full name validation
-    if (( preg_match(" /[^a-zA-Z\s]/ ", $_POST["name"])){
+    if ( preg_match(" /[^a-zA-Z\s]/ ", $_POST["name"]) === 1) {
         $ERR = "Name can only contain alphabets"
     } 
 
@@ -56,16 +67,7 @@
     if (!is_numeric($_POST["max_seek_age"])) {
         $ERR[] = "Maximum age sought must be a number.";
     }
-
 ?>
-
-<?php
-    foreach ($ERR as $e) {
-?>
-            <li><?= $e ?> </li>
-    <?php } ?>
-        </ul>
-    </div>
 
 
 
