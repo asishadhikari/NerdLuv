@@ -67,8 +67,9 @@
         $ERR[] = "Maximum age sought must be a number.";
     }
 
-    print($ERR);
-
+    foreach ($ERR as $e) {
+        print($e);
+    }
 
 ?>
 
