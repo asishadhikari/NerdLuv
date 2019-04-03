@@ -35,12 +35,6 @@
         $usr['max_seek_age'] = ($_POST['max_seek_age']);
     }
 
-//full name validation
-    if ( preg_match(" /[^a-zA-Z\s]/ ", $_POST["name"]) == 1) {
-        $ERR = "Name can only contain alphabets"
-    } 
-
-
 
 ?>
 
