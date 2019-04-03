@@ -74,10 +74,12 @@
     <!-- Input validation done -->
     <?php
         if(!empty($ERR)){
+    ?>
+        <h1>Follwing error detected in your registration attempt!!!</h1>
+    <?php
         foreach ($ERR as $e) {
     
     ?>
-        <h1>Error...</h1>
         <ul>
             <li><?= $e?></li>
         </ul>
