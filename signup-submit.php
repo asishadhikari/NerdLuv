@@ -42,9 +42,10 @@
 
     if (strlen($_POST['name'])==0){
         $ERR[] = "Name cannot be empty";
+        $len0 = 1;
     }
     $full_name = explode(" ", $user["name"]); //delimited space
-    for ($i = 0; $i < count($full_name); $i++) {
+    for ($i = 0; $i < count($full_name) && $len0 !=1; $i++) {
         //check if all words are capitalized
         if( (preg_match("/[A-Z][a-z]*/", $full_name[$i])) != 0) {
             $ERR[] = "Every First Letter Must Be Capital!";
