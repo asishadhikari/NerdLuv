@@ -46,7 +46,7 @@
         $ERR[] = "Name cannot be empty!!";
     }
 
-    print("Num elements in full name".$full_name);
+    print("Num elements in full name".count($full_name));
     for ($i = 0; $i < count($full_name); $i++) {
         //check if all words are capitalized
         if(strcmp(ucfirst($full_name[$i]),$full_name[$i]) !== 0) {
