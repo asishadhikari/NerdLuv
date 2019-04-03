@@ -38,3 +38,4 @@
     </form>
 </div>
 
+<?php include("bottom.html")?>
