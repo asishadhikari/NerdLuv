@@ -1,58 +1,57 @@
 <?php include("top.html"); ?>
 
 <?php
-    $ERR = array();
-    $usr = array(
-        'name' => '',
-        'gender' => '',
-        'age' => '',
-        'persona_type' => '',
-        'fav_os' => '',
-        'min_seek_age' => '',
-        'max_seek_age' => ''
-    );
+$ERR = array();
+$usr = array(
+    'name' => '',
+    'gender' => '',
+    'age' => '',
+    'persona_type' => '',
+    'fav_os' => '',
+    'min_seek_age' => '',
+    'max_seek_age' => ''
+);
 
-    /*Extract data from post request (associative array)*/
-    if(isset($_POST['name'])) {
-        $usr['name'] = urlencode($_POST['name']);
-    }
-    if(isset($_POST['gender'])) {
-        $usr['gender'] = urlencode($_POST['gender']);
-    }
-    if(isset($_POST['age'])) {
-        $usr['age'] = urlencode($_POST['age']);
-    }
-    if(isset($_POST['persona_type'])) {
-        $usr['persona_type'] = ($_POST['persona_type']);
-    }
-    if(isset($_POST['fav_os'])) {
-        $usr['fav_os'] = ($_POST['fav_os']);
-    }
-    if(isset($_POST['min_seek_age'])){
-        $usr['min_seek_age'] = ($_POST['min_seek_age']);
-    }
-    if(isset($_POST['max_seek_age'])){
-        $usr['max_seek_age'] = ($_POST['max_seek_age']);
-    }
-
+/*Extract data from post request (associative array)*/
+if(isset($_POST['name'])) {
+    $usr['name'] = urlencode($_POST['name']);
+}
+if(isset($_POST['gender'])) {
+    $usr['gender'] = urlencode($_POST['gender']);
+}
+if(isset($_POST['age'])) {
+    $usr['age'] = urlencode($_POST['age']);
+}
+if(isset($_POST['persona_type'])) {
+    $usr['persona_type'] = ($_POST['persona_type']);
+}
+if(isset($_POST['fav_os'])) {
+    $usr['fav_os'] = ($_POST['fav_os']);
+}
+if(isset($_POST['min_seek_age'])){
+    $usr['min_seek_age'] = ($_POST['min_seek_age']);
+}
+if(isset($_POST['max_seek_age'])){
+    $usr['max_seek_age'] = ($_POST['max_seek_age']);
+}
+$len0 = 0;
     //full name validation
-    if ( preg_match(" /[^a-zA-Z\s]/ ", $_POST["name"]) === 1) {
-        $ERR[] = "Name should be valid character string";
-    } 
+if ( preg_match(" /[^a-zA-Z\s]/ ", $_POST["name"]) === 1) {
+    $ERR[] = "Name should be valid character string";
+    $len0 = 1;
+} 
 
-    if (strlen($_POST['name'])==0){
-        $ERR[] = "Name cannot be empty";
-        $len0 = 1;
-    }
-    $full_name = explode(" ", $user["name"]); //delimited space
-    for ($i = 0; $i < count($full_name) && $len0 !=1; $i++) {
-        //check if all words are capitalized
-        if( (preg_match("/[A-Z][a-z]*/", $full_name[$i])) != 0) {
-            $ERR[] = "Every First Letter Must Be Capital!";
+if (strlen($_POST['name'])==0){
+    $ERR[] = "Name cannot be empty";
+    $len0 = 1;
+}
+    $full_name = explode(" ", $_POST['name']); //delimited space
+    for ($i = 0; $i < count($full_name); $i++) {
+        if(strcmp(ucfirst($full_name[$i]),$full_name[$i]) !== 0) {
+            $ERR[] = "First character of Name must be CAPITAL!!";
             break;
         }
     }
-
     //age validation
     if (!is_numeric($usr["age"]) || (int) $usr >= 200 ) {
         $ERR[] = "Age must be a sensible number!";
@@ -74,6 +73,6 @@
         print($e)."\n";
     }
 
-?>
+    ?>
 
-<?php include("bottom.html"); ?>
+    <?php include("bottom.html"); ?>
