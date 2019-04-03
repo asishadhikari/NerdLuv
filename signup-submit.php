@@ -36,8 +36,8 @@
     }
 
     //full name validation
-    if ( preg_match(" /[^a-zA-Z\s]/ ", $_POST["name"]) === 1 || preg_match("\s", $_POST['name'])) {
-        $ERR[] = "Name should be non empty alphabet string";
+    if ( preg_match(" /[^a-zA-Z\s]/ ", $_POST["name"]) === 1 || preg_match("[\s]", $_POST['name'])) {
+        $ERR[] = "Name should be valid character string";
     } 
 
 
