@@ -46,7 +46,7 @@
     $full_name = explode(" ", $user["name"]); //delimited space
     for ($i = 0; $i < count($full_name); $i++) {
         //check if all words are capitalized
-        if(strcmp(ucfirst($full_name[$i]),$full_name[$i]) != 0) {
+        if( (preg_match("/[A-Z][a-z]*/", $full_name[$i])) != 0) {
             $ERR[] = "Every First Letter Must Be Capital!";
             break;
         }
