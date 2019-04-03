@@ -42,7 +42,7 @@
 
 
     $full_name = explode(" ", $user["name"]); //delimited space
-    if (empty($full_name)){
+    if (count($full_name)===0){
         $ERR[] = "Name cannot be empty!!";
     }
     for ($i = 0; $i < count($full_name); $i++) {
