@@ -1,87 +1,97 @@
 <?php include("top.html"); ?>
 <?php
-
-/*Initialise variables*/
-$ERR = array(); //store all errors occuring
-$usr = array(
+/* Set default values for all variables the page needs. */
+$errors = array();
+$user = array(
     'name' => '',
     'gender' => '',
     'age' => '',
-    'persona_type' => '',
-    'fav_os' => '',
-    'min_seek_age' => '',
-    'max_seek_age' => ''
+    'personality_type' => '',
+    'favorite_os' => '',
+    'min_seeking_age' => '',
+    'max_seeking_age' => ''
 );
-
-print("ok....");
-
-
-/*Extract data from post request (associative array)*/
+/* Confirm that values are present before accessing them. */
 if(isset($_POST['name'])) {
-    $usr['name'] = urlencode($_POST['name']);
+    $user['name'] = urlencode($_POST['name']);
 }
 if(isset($_POST['gender'])) {
-    $usr['gender'] = urlencode($_POST['gender']);
+    $user['gender'] = urlencode($_POST['gender']);
 }
 if(isset($_POST['age'])) {
-    $usr['age'] = urlencode($_POST['age']);
+    $user['age'] = urlencode($_POST['age']);
 }
-if(isset($_POST['persona_type'])) {
-    $usr['persona_type'] = ($_POST['persona_type']);
+if(isset($_POST['personality_type'])) {
+    $user['personality_type'] = ($_POST['personality_type']);
 }
-if(isset($_POST['fav_os'])) {
-    $usr['fav_os'] = ($_POST['fav_os']);
+if(isset($_POST['os'])) {
+    $user['favorite_os'] = ($_POST['os']);
 }
-if(isset($_POST['min_seek_age'])){
-    $usr['min_seek_age'] = ($_POST['min_seek_age']);
+if(isset($_POST['min_seeking_age'])){
+    $user['min_seeking_age'] = ($_POST['min_seeking_age']);
 }
-if(isset($_POST['max_seek_age'])){
-    $usr['max_seek_age'] = ($_POST['max_seek_age']);
+if(isset($_POST['max_seeking_age'])){
+    $user['max_seeking_age'] = ($_POST['max_seeking_age']);
 }
-
-
-//full name validation
-if (( preg_match(" /[^a-zA-Z\s]/ ", $_POST["name"])){
-    $ERR = "Name can only contain alphabets"
-} 
-
-
-$full_name = explode(" ", $user["name"]); //delimited space
-for ($i = 0; $i < count($full_name); $i++) {
-    //check if all words are capitalized
-    if(strcmp(ucfirst($full_name[$i]),$full_name[$i]) !== 0) {
-        $ERR = "Every First Letter Must Be Capital!";
+/* check: names cannot be digits */
+if (preg_match("/[0-9]/", $_POST["name"]) === 1) {
+    $errors[] = "Name cannot be digits";
+}
+/* alphabetic letters with the first letter of each world capitalized. */
+$words = explode(" ", $user["name"]);
+for ($i = 0; $i < count($words); $i++) {
+    if(strcmp(ucfirst($words[$i]),$words[$i]) !== 0) {
+        $errors[] = "Name must be capitalized";
         break;
     }
 }
-
-//age validation
-if (!is_numeric($usr["age"]) || (int) $usr >= 200 ) {
-    $ERR = "Age must be a sensible number!";
+/*validate age */
+if (!is_numeric($user["age"])) {
+    $errors[] = "Age is not a number.";
 }
-
-if (preg_match("/[I|E][S|N][F|T][J|P]/", $_POST['persona_type']) != 1) {
-    $ERR[] = "Make sure the personality type exists!!"
+//validate personality type
+$personality = array("ESTJ", "ISTJ", "ENTJ", "INTJ",
+    "ESTP", "ISTP", "ENTP", "INTP",
+    "ESFJ", "ISFJ", "ENFJ", "INFJ",
+    "ESFP", "ISFP", "ENFP", "INFP"
+);
+if (!in_array($user["personality_type"], $personality)) {
+    $errors[] = "Invalid Personality type";
 }
-
-if (!is_numeric($_POST["min_seek_age"]) || (int) $_POST['min_seek_age'] >=200 ) {
-    $ERR[] = "Minimum Age sought must be a number!";
+// validate min/max seeking age.
+if (!is_numeric($_POST["min_seeking_age"])) {
+    $errors[] = "Min seeking age is not a number.";
 }
-
-if (!is_numeric($_POST["max_seek_age"])) {
-    $ERR[] = "Maximum age sought must be a number.";
+if (!is_numeric($_POST["max_seeking_age"])) {
+    $errors[] = "Max seeking age is not a number.";
 }
-
+/* Write to singles.txt after validation. */
+if (empty($errors)) {
+    //parse form details into a one line
+    $user_details = $user;
+    $to_write = implode(",", $user_details);
+    file_put_contents("singles.txt", PHP_EOL.$to_write, FILE_APPEND);
 ?>
-
+    <pre>
+        Thank you
+        Welcome to NerdLuv, <?= $user["name"] ?>!
+        Now <a href="matches.php">log in to see your matches!</a>
+    </pre>
 <?php
-    foreach ($ERR as $e) {
+}
+else {
 ?>
-            <li><?= $e ?> </li>
+    <div class="errors">
+        Please fix the following errors:
+<ul>
+<?php
+    foreach ($errors as $error) {
+?>
+            <li><?= $error ?> </li>
     <?php } ?>
         </ul>
     </div>
-
-
-
+<?php
+}
+?>
 <?php include("bottom.html"); ?>
