@@ -18,18 +18,18 @@
             <input type="text" name="age" size="6" maxlength="2"><br>
 
             <strong class="column">Personality Type:</strong>
-            <input type="text" name="personality_type" size="6" maxlength="4"><br>
+            <input type="text" name="persona_type" size="6" maxlength="4"><br>
 
             <strong class="column">Favorite OS:</strong>
-            <select name="os">
+            <select name="fav_os">
                 <option value="Windows" selected>Windows</option>
                 <option value="Mac OS X" >Mac OS X</option>
                 <option value="Linux"> Linux</option>
             </select><br>
 
             <strong class="column">Seeking age:</strong>
-            <input type="text" name="min_seeking_age" size="6" maxlength="2" placeholder="min"> to
-            <input type="text" name="max_seeking_age" size="6" maxlength="2" placeholder="max"><br>
+            <input type="text" name="min_seek_age" size="6" maxlength="2" placeholder="min"> to
+            <input type="text" name="max_seek_age" size="6" maxlength="2" placeholder="max"><br>
 
             <input type="submit" value="Sign Up">
 
