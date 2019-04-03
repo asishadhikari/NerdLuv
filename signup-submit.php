@@ -36,9 +36,11 @@
     }
 
     //full name validation
-    if ( preg_match(" /[^a-zA-Z\s]/ ", $_POST["name"]) === 1 || preg_match("[^\s]", $_POST['name'])) {
+    if ( preg_match(" /[^a-zA-Z\s]/ ", $_POST["name"]) === 1) {
         $ERR[] = "Name should be valid character string";
     } 
+
+    print("length of User name is ".count($_POST['name']));
 
 
     $full_name = explode(" ", $user["name"]); //delimited space
