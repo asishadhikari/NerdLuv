@@ -13,7 +13,7 @@ $usr = array(
     'max_seek_age' => ''
 );
 
-print("ok....")
+print("ok....");
 
 
 /*Extract data from post request (associative array)*/
