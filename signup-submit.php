@@ -72,11 +72,12 @@ if (!is_numeric($_POST["max_seek_age"])) {
     $ERR[] = "Maximum age sought must be a number.";
 }
 
+?>
 
 <?php
-    foreach ($errors as $error) {
+    foreach ($ERR as $e) {
 ?>
-            <li><?= $error ?> </li>
+            <li><?= $e ?> </li>
     <?php } ?>
         </ul>
     </div>
