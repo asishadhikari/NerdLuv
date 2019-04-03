@@ -68,7 +68,7 @@
     }
 
     foreach ($ERR as $e) {
-        print($e);
+        print($e)."\n";
     }
 
 ?>
