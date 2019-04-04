@@ -130,7 +130,7 @@
             $stmt = "INSERT INTO personalities ";
             $stmt .= "(name, user_id) ";
             $stmt .= "VALUES (";
-            $stmt .= "'" . $usr['personality_type'] . "',";
+            $stmt .= "'" . $usr['persona_type'] . "',";
             $stmt .= "'" . $uid . "' ";
             $stmt .= ");";
 
@@ -139,8 +139,8 @@
             $stmt = "INSERT INTO seeking_age ";
             $stmt .= "(min_age, max_age, user_id) ";
             $stmt .= "VALUES (";
-            $stmt .= "'" . $usr['min_seeking_age'] . "',";
-            $stmt .= "'" . $usr['max_seeking_age'] . "',";
+            $stmt .= "'" . $usr['min_seek_age'] . "',";
+            $stmt .= "'" . $usr['max_seek_age'] . "',";
             $stmt .= "'" . $uid . "' ";
             $stmt .= ");";
 
