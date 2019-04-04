@@ -23,6 +23,8 @@ $stmt = "SELECT * FROM users where name = 'Ashish';";
 $matches = mysqli_query($dbase, $stmt);
 print(count($matches));
 
+print($matches->fetch_assoc()['age']);
+
 //print(" uid ".$uid." gender ".$gender." age".$age);
 
 
