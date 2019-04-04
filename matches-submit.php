@@ -62,17 +62,10 @@ $stmt = "SELECT users.name, gender, age, ";
 $stmt .= "fav_os.name as os, ";
 $stmt .= "personalities.name as personality FROM users ";
 $stmt .= "JOIN fav_os ON users.id = fav_os.user_id ";
-$stmt .= "JOIN seeking_age ON users.id = seeking_age.user_id ";
-$stmt .= "JOIN personalities ON users.id = personalities.user_id ";
-$stmt .= "WHERE users.gender = ";
-$stmt .= "'" . $seeking_gender . "' ";
-$stmt .= "and users.age >= ". $min_seek_age . " ";
-$stmt .= "and users.age <= ". $max_seek_age . " ";
-$stmt .= "and seeking_age.min_age <= " . $age . " ";
-$stmt .= "and seeking_age.max_age >= " . $age . " ";
 $stmt .= "and fav_os.name = '" . $fav_os . "'; ";
 
 $query = mysqli_query($dbase, $stmt);
+
 
 
 ?>
