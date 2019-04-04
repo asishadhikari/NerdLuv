@@ -103,12 +103,8 @@ if (mysqli_num_rows($query) > 0) {
 	</div>
 
 <?php
-}if(mysqli_num_rows($query)==0){
-?>
-	<div>
-	<p> No match is found.</p>
-	</div>
-<?php
+}else{
+	print("None");
 }
 include('bottom.html');
 ?>
