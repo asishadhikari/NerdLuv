@@ -74,7 +74,7 @@ $stmt .= "and seeking_age.max_age >= " . $age . " ";
 $stmt .= "and fav_os.name = '" . $fav_os . "'; ";
 
 $query = mysqli_query($dbase, $stmt);
-if (mysqli_num_rows($query)> 0) {
+if (mysqli_num_rows($query) > 1) {
 ?>
 	<strong>Matches for <?= $_GET['name'] ?></strong><br>
 	<div>
