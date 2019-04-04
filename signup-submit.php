@@ -148,7 +148,7 @@
 
         }
 
-    mysqli_close($dbase);
+//    mysqli_close($dbase);
 
     ?>
 
