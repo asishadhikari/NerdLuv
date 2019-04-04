@@ -109,16 +109,46 @@
         $stmt .= "'" . $usr['age'] . "',";
         $stmt .= "'" . $timestamp . "' ";
         $stmt .= ");";
-        print("user name is ".$usr['name']);
-        //add to database
+
+        //Insert into users table
         $success_write = mysqli_query($dbase, $stmt);
 
         if($success_write){
             $uid = mysqli_insert_id($dbase);
-            
+            $stmt = "INSERT INTO fav_os ";
+            $stmt .= "(name, user_id) ";
+            $stmt .= "VALUES (";
+            $stmt .= "'" . $usr['fav_os'] . "',";
+            $stmt .= "'" . $uid . "' ";
+            $stmt .= ");";
+
+            //Insert into favos table
+            mysqli_query($dbase,$stmt);
+
+
+            // Insert into Personalities 
+            $stmt = "INSERT INTO personalities ";
+            $stmt .= "(name, user_id) ";
+            $stmt .= "VALUES (";
+            $stmt .= "'" . $usr['personality_type'] . "',";
+            $stmt .= "'" . $uid . "' ";
+            $stmt .= ");";
+
+            mysqli_query($dbase, $stmt);
+
+            $stmt = "INSERT INTO seeking_age ";
+            $stmt .= "(min_age, max_age, user_id) ";
+            $stmt .= "VALUES (";
+            $stmt .= "'" . $usr['min_seeking_age'] . "',";
+            $stmt .= "'" . $usr['max_seeking_age'] . "',";
+            $stmt .= "'" . $uid . "' ";
+            $stmt .= ");";
+
+            mysql_query($dbase, $stmt);
 
         }
 
+    mysqli_close($dbase);
 
     ?>
 
