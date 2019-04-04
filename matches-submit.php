@@ -104,8 +104,9 @@ print("nok...");
 	</div>
 
 <?php
-print("ok...");
 }else{
+print("ok...");
+
 ?>
 	<div>
 	<p> No match is found.</p>
