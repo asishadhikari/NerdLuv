@@ -71,6 +71,7 @@
 
 
     if ( isset($usr['min_seek_age']) && isset($usr['max_seek_age'])) {
+        print("ok...");
         if( (int) $usr['min_seek_age'] > (int) $usr['min_seek_age']){
             $ERR[] = "Your seeking age is inconsistent!";
         }
