@@ -49,7 +49,9 @@ $max_seek_age = (int)$seek_age["max_age"];
 $seeking_gender =  (strcmp($gender,'M')==0 ? 'F' : 'M');
 $candidate = array();
 
-/*$stmt = "SELECT users.name AS name, gender, age, personalities.name AS personality, ";
+/*
+	Discarded query so as to maintain the unique results
+$stmt = "SELECT users.name AS name, gender, age, personalities.name AS personality, ";
 $stmt.= "fav_os.name as os FROM users, personalities, fav_os, seeking_age ";
 $stmt.= "WHERE users.id = personalities.user_id AND personalities.user_id = fav_os.user_id ";
 $stmt.= "AND fav_os.user_id = seeking_age.user_id ";
@@ -70,9 +72,6 @@ $stmt .= "and users.age <= ". $max_seek_age . " ";
 $stmt .= "and seeking_age.min_age <= " . $age . " ";
 $stmt .= "and seeking_age.max_age >= " . $age . " ";
 $stmt .= "and fav_os.name = '" . $fav_os . "'; ";
-
-
-print($stmt);
 
 $query = mysqli_query($dbase, $stmt);
 if ($query->num_rows > 0) {
