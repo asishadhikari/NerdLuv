@@ -1,6 +1,6 @@
 <?php 
 include("top.html"); 
-require_once('database_driver.php');
+require_once('init_connection.php');
 //print(phpinfo());
 ?>
 
