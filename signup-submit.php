@@ -99,8 +99,8 @@
     ?>
 
     <p>
-    <strong>Thank you!</strong><br>
-    Welcome to NerdLuv, <?= $usr['name'] ?>! <br>
+    <strong>Thank you!</strong><br><br>
+    Welcome to NerdLuv, <?= $usr['name'] ?>! <br><br>
     Now <a href="matches.php">log in to see your matches!</a>
     </p>        
     <?php
