@@ -80,7 +80,7 @@ if ($query->num_rows > 0) {
 	<strong>Matches for <?= $_GET['name'] ?></strong><br>
 	<div>
 <?php
-		while ($record = mysqli_fetch_row($query)) {
+		while ($record = mysqli_fetch_assoc($query)) {
 			//check if a compatible personality
 			$persona_check = "/[".$persona_type."]/";
 			if (preg_match($persona_check, $record["personality"]) === 1){
