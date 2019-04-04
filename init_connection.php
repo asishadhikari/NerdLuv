@@ -13,6 +13,6 @@ function connect_to_db() {
 	return $conn;                                                            
 }   
 
-//$dbase = connect_to_db();                                  
+$dbase = connect_to_db();                                  
 
 ?>
