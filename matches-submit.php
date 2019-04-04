@@ -38,8 +38,15 @@ $stmt = "SELECT name FROM fav_os WHERE user_id = ".$uid;
 $res_favos = mysqli_query($dbase, $stmt);
 $fav_os = $res_favos->fetch_assoc()["name"];
 
-print($fav_os);
+//obtain the seeking age
+$stmt = "SELECT min_age, max_age FROM seeking_age WHERE user_id = ".$uid;
+$res_seek_age = mysqli_query($dbase, $stmt);
+$seek_age = $res_seek_age->fetch_assoc();
+$min_seek_age = (int)$seek_age["min_age"];
+$max_seek_age = (int)$seek_age["max_age"];
 
+
+print($min_seek_age." ".$max_seek_age);
 
 /*
 
@@ -48,12 +55,6 @@ print($fav_os);
 
 
 
-//obtain the seeking age
-$stmt = "SELECT min_age, max_age FROM seeking_age WHERE user_id = ".$uid;
-$res_seek_age = mysqli_query($dbase, $stmt);
-$seek_age = $res_seek_age->fetch_assoc();
-$min_seek_age = (int)$seek_age["min_age"];
-$max_seek_age = (int)$seek_age["max_age"];
 
 
 //Since gender is submitted with radio, not input validating here
