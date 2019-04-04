@@ -1,3 +1,7 @@
+<?php
+ require_once('init_connection.php');
+?>
+
 <!DOCTYPE html>
 <html>
 	<!--

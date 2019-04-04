@@ -1,4 +1,7 @@
-<?php include("top.html");?>
+<?php
+ include("top.html");
+ require_once('init_connection.php');
+?>
 
 
 <div>

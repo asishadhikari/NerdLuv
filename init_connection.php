@@ -12,9 +12,6 @@ function connect_to_db() {
 	return $conn;                                                            
 }
 
-$dbase = connect_to_db();                                  
+global $dbase = connect_to_db();                                  
 
-if($dbase){
-	print("Database is connected!");
-}
 ?>
