@@ -112,7 +112,7 @@ if($user_exists){
 	}
 }else{
 	?>
-	<p> This User Does not Exist!!!</p>
+	<strong>This User Does not Exist!!!</strong> 
 	<?php
 }
 include('bottom.html');
