@@ -17,7 +17,7 @@ $fav_os = '';
 	//query dbase
 $stmt = "SELECT * FROM users where name = '" . $given_name . "';";
 $matches = mysqli_query($dbase, $stmt);
-
+/*
 //not worrying about duplicates and using first result
 $record = $matches->fetch_assoc()) 
 $uid = $record["id"];
@@ -85,6 +85,6 @@ if ($query->num_rows > 0) {
 	<?php	
 }
 
-
+*/
 include('bottom.html');
 ?>
