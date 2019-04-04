@@ -99,7 +99,26 @@
     <?php
         }
     }else{
-        
+        global $dbase;
+        $timestamp = date("Y-m-d H:i:s");
+        $stmt = "INSERT INTO users ";
+        $stmt .= "(name, gender, age, created_at) ";
+        $stmt .= "VALUES (";
+        $stmt .= "'" . $user['name'] . "',";
+        $stmt .= "'" . $user['gender'] . "',";
+        $stmt .= "'" . $user['age'] . "',";
+        $stmt .= "'" . $created_at . "' ";
+        $stmt .= ");";
+    
+        //add to database
+        $success_write = mysqli_query($dbase, $stmt);
+
+        if($success_write){
+            $uid = mysqli_insert_id($dbase);
+            
+
+        }
+
 
     ?>
 
