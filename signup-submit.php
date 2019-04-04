@@ -100,8 +100,6 @@
         }
     }else{
         
-        global $dbase;
-        $time_stamp = date("Y-m-d H:i:s");
 
     ?>
 
