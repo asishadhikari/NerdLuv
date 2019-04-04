@@ -2,7 +2,6 @@
 include("top.html"); 
 require_once('init_connection.php');
 //print(phpinfo());
-print(var_dump(function_exists('mysqli_connect')));
 ?>
 
 <!-- Web Programming Step by Step, Homework 4 (NerdLuv)
