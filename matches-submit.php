@@ -74,37 +74,7 @@ $stmt .= "and seeking_age.max_age >= " . $age . " ";
 $stmt .= "and fav_os.name = '" . $fav_os . "'; ";
 
 $query = mysqli_query($dbase, $stmt);
-if (mysqli_num_rows($query) > 0) {
-?>
-	<strong>Matches for <?= $_GET['name'] ?></strong><br>
-	<div>
-<?php
-		while ($record = mysqli_fetch_assoc($query)) {
-			//check if a compatible personality
-			$persona_check = "/[".$persona_type."]/";
-			if (preg_match($persona_check, $record["personality"]) === 1){
-?>
-				<div class="match">
-					<img src="user.jpg" alt="photo"/>
-					<div>
-						<ul>
-							<li><p><?= $record["name"] ?></p></li>
-							<li><strong>gender:</strong> <?= $record["gender"] ?></li>
-							<li><strong> age:</strong> <?= $record["age"] ?> </li>
-							<li><strong> type:</strong> <?= $record["personality"] ?> </li>
-							<li><strong> OS:</strong> <?= $record["os"] ?></li>
-						</ul>
-					</div>
-				</div>
-<?php
-			}
-		}
-?>
-	</div>
+print("None");
 
-<?php
-}else{
-	print("None");
-}
 include('bottom.html');
 ?>
