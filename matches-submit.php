@@ -53,7 +53,7 @@ $stmt = "SELECT users.name AS name, gender, age, personalities.name AS personali
 $stmt.= "fav_os.name as os FROM users, personalities, fav_os, seeking_age ";
 $stmt.= "WHERE users.id = personalities.user_id = fav_os.user_id = seeking_age.user_id ";
 $stmt.= "AND gender = '".$seeking_gender."' AND age >= ".$min_seek_age." ";
-$stmt.= "AND age <= ".$max_seek_age." AND fav_os = '".$fav_os."';";
+$stmt.= "AND age <= ".$max_seek_age." AND fav_os.name = '".$fav_os."';";
 
 print($stmt);
 
