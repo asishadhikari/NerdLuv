@@ -33,8 +33,12 @@ $stmt = "SELECT name FROM personalities WHERE user_id = '".$uid."';";
 $res_personality = mysqli_query($dbase, $stmt);
 $persona_type = $res_personality->fetch_assoc()["name"];
 
-print($persona_type);
+//obtain user's favourite os
+$stmt = "SELECT name FROM fav_os WHERE user_id = ".$uid;
+$res_favos = mysqli_query($dbase, $stmt);
+$fav_os = $res_favos->fetch_assoc()["name"];
 
+print($fav_os);
 
 
 /*
@@ -43,10 +47,6 @@ print($persona_type);
 
 
 
-//obtain user's favourite os
-$stmt = "SELECT name FROM fav_os WHERE user_id = ".$uid;
-$res_favos = mysqli_query($dbase, $stmt);
-$fav_os = $res_favos->fetch_assoc()["name"];
 
 //obtain the seeking age
 $stmt = "SELECT min_age, max_age FROM seeking_age WHERE user_id = ".$uid;
