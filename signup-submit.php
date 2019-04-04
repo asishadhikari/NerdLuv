@@ -88,7 +88,7 @@
 
     ?>
 
-    <!-- Input validation done -->
+    <!-- All Input validation done -->
     <?php
         if(!empty($ERR)){
     ?>
@@ -103,6 +103,7 @@
     <?php
         }
     }else{
+        //write into database if no errors in user form submission
         global $dbase;
         $timestamp = date("Y-m-d H:i:s");
         $stmt = "INSERT INTO users ";
@@ -117,6 +118,7 @@
         //Insert into users table
         $success_write = mysqli_query($dbase, $stmt);
 
+        //check if database was written to only for first table
         if($success_write){
             $uid = mysqli_insert_id($dbase);
             $stmt = "INSERT INTO fav_os ";
@@ -151,9 +153,6 @@
             mysqli_query($dbase, $stmt);
 
         }
-
-//    mysqli_close($dbase);
-
     ?>
 
     <p>
@@ -161,11 +160,8 @@
     Welcome to NerdLuv, <?= $usr['name'] ?>! <br><br>
     Now <a href="matches.php">log in to see your matches!</a>
     </p>        
+
     <?php
     }
-
-
     ?>
-
-
     <?php include("bottom.html"); ?>
