@@ -1,6 +1,6 @@
 <?php
  include("top.html"); 
- require_once('init_connection.php');
+ require_once('init_connection.php'); //connect to db once
 
 ?>
 
@@ -16,7 +16,7 @@
         'max_seek_age' => ''
     );
 
-    /*Extract data from post request (associative array)*/
+    /*Extract data from the post request (associative array)*/
     if(isset($_POST['name'])) {
         $usr['name'] = urlencode($_POST['name']);
     }
@@ -38,32 +38,36 @@
     if(isset($_POST['max_seek_age'])){
         $usr['max_seek_age'] = ($_POST['max_seek_age']);
     }
-    $len0 = 0;
-        //full name validation
+
+    //Check provided name for non alphabetic characters
     if ( preg_match(" /[^a-zA-Z\s]/ ", $_POST["name"]) === 1) {
-        $ERR[] = "Name should be valid character string";
-        $len0 = 1;
+        $ERR[] = "Name should have only alphabets";
     } 
 
+    //check if empty name provided
     if (strlen($_POST['name'])==0){
         $ERR[] = "Name cannot be empty";
-        $len0 = 1;
     }
-        $full_name = explode(" ", $_POST['name']); //delimited space
-        for ($i = 0; $i < count($full_name); $i++) {
-            if(strcmp(ucfirst($full_name[$i]),$full_name[$i]) !== 0) {
-                $ERR[] = "First character of Name must be CAPITAL!!";
-                break;
-            }
+
+    //obtain array of space separated names
+    $full_name = explode(" ", $_POST['name']);
+    //check for all string in array if first letter is capitalised 
+    for ($i = 0; $i < count($full_name); $i++) {
+        if(strcmp(ucfirst($full_name[$i]),$full_name[$i]) !== 0) {
+            $ERR[] = "First character of Name must be CAPITAL!!";
+            break;
         }
-    //age validation
+    }
+    //age is a number leq 200
     if (!is_numeric($usr["age"]) || (int) $usr >= 200 ) {
         $ERR[] = "Age must be a sensible number!";
     }
 
+    //only given pattern is accepted for Keirsey personality type
     if (preg_match("/[I|E][S|N][F|T][J|P]/", $_POST['persona_type']) != 1) {
         $ERR[] = "Make sure the personality type exists!!";
     }
+
 
     if (!is_numeric($_POST["min_seek_age"]) || (int) $_POST['min_seek_age'] >=200 ) {
         $ERR[] = "Minimum Age sought must be a number!";
@@ -74,7 +78,7 @@
     }
 
 
-    if ( isset($usr['min_seek_age']) && isset($usr['max_seek_age'])) {
+    if ( isset($min_seek_age) && isset($max_seek_age)) {
         if( ((int)$usr['min_seek_age']) > ((int) $usr['min_seek_age'])) {
             $ERR[] = "Your seeking age is inconsistent!";
         }

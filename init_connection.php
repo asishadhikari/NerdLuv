@@ -1,6 +1,6 @@
 <?php
 require_once('connect_mysql.php');
-
+//used to establish connection with db on first request
 function connect_to_db() {                                                          
 	$conn = mysqli_connect(DB_SRV, DB_USR, DB_PASS, DB_NAME);            
 	if(mysqli_connect_errno()) {                                                   

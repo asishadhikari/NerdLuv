@@ -2,10 +2,11 @@
 include('top.html');
 require_once('init_connection.php');
 
-
+//get provided name parameter
 $given_name = $_GET['name'];
 global $dbase;
 
+//check if db connected
 if(!$dbase){
 	print("Not Connected!!");
 }
@@ -18,29 +19,32 @@ $min_seek_age = '';
 $max_seek_age = '';
 $fav_os = '';
 
-	//query dbase
+//query dbase for given name and consider only first record obtained
 $stmt = "SELECT * FROM users where name = '".$given_name."';";
 $matches = mysqli_query($dbase, $stmt);
-//not worrying about duplicates and using first result
 $record = mysqli_fetch_assoc($matches);
+
+//check if user with given name exists
 $user_exists = (mysqli_num_rows($matches)==0) ? FALSE : TRUE;
 
+//proceed with queries iff user exists
 if($user_exists){
-	$uid = $record["id"];
+	//extract all entries in users table
+	$uid = $record["id"];  
 	$gender = $record["gender"];
 	$age = (int)$record["age"];
 
-	//obtain user's personality type
+	//Query personalities table for user's personality type
 	$stmt = "SELECT name FROM personalities WHERE user_id = '".$uid."';";
 	$res_personality = mysqli_query($dbase, $stmt);
 	$persona_type = $res_personality->fetch_assoc()["name"];
 
-	//obtain user's favourite os
+	//Query fav_os table for the OS name
 	$stmt = "SELECT name FROM fav_os WHERE user_id = ".$uid;
 	$res_favos = mysqli_query($dbase, $stmt);
 	$fav_os = $res_favos->fetch_assoc()["name"];
 
-	//obtain the seeking age
+	//obtain the seeking age range and query seeking_age table
 	$stmt = "SELECT min_age, max_age FROM seeking_age WHERE user_id = ".$uid;
 	$res_seek_age = mysqli_query($dbase, $stmt);
 	$seek_age = $res_seek_age->fetch_assoc();
@@ -51,22 +55,15 @@ if($user_exists){
 	$seeking_gender =  (strcmp($gender,'M')==0 ? 'F' : 'M');
 	$candidate = array();
 
-	/*
-		Discarded query so as to maintain the unique results
-	$stmt = "SELECT users.name AS name, gender, age, personalities.name AS personality, ";
-	$stmt.= "fav_os.name as os FROM users, personalities, fav_os, seeking_age ";
-	$stmt.= "WHERE users.id = personalities.user_id AND personalities.user_id = fav_os.user_id ";
-	$stmt.= "AND fav_os.user_id = seeking_age.user_id ";
-	$stmt.= "AND gender = '".$seeking_gender."' AND age >= ".$min_seek_age." ";
-	$stmt.= "AND age <= ".$max_seek_age." AND fav_os.name = '".$fav_os."';";
-	*/
-
+	//construct query for all matching users for given user's information
 	$stmt = "SELECT users.name, gender, age, ";
 	$stmt .= "fav_os.name as os, ";
 	$stmt .= "personalities.name as personality FROM users ";
+	 //combine redundant info into one row
 	$stmt .= "JOIN fav_os ON users.id = fav_os.user_id ";
 	$stmt .= "JOIN seeking_age ON users.id = seeking_age.user_id ";
 	$stmt .= "JOIN personalities ON users.id = personalities.user_id ";
+	//conditions : opposite gender, age in range, same OS preference
 	$stmt .= "WHERE users.gender = ";
 	$stmt .= "'" . $seeking_gender . "' ";
 	$stmt .= "and users.age >= ". $min_seek_age . " ";
@@ -76,6 +73,7 @@ if($user_exists){
 	$stmt .= "and fav_os.name = '" . $fav_os . "'; ";
 
 	$query = mysqli_query($dbase, $stmt);
+	//only if matches obtained for given user query
 	if (mysqli_num_rows($query) > 0) {
 	?>
 		<strong>Matches for <?= $_GET['name'] ?></strong><br>
@@ -110,6 +108,7 @@ if($user_exists){
 		<p>No match is found. </p>
 	<?php		
 	}
+	//Used to stop any queries for non existant users, check correcponding if stmt
 }else{
 	?>
 	<strong>This User Does not Exist!!!</strong> 
