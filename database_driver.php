@@ -5,6 +5,6 @@ header('X-XSS-Protection: 0');
                                                 
 require_once('init_connection.php');                           
 
-$dbase = connect_to_db();                                  
+//$dbase = connect_to_db();                                  
                                                     
 ?>   
