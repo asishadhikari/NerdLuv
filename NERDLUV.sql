@@ -42,14 +42,3 @@ CREATE TABLE seeking_age (
     PRIMARY KEY (id),
     KEY user_id (user_id)
 );
-
-
-
-
-
-
-
-
-
-
-

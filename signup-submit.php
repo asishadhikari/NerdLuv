@@ -1,7 +1,7 @@
 <?php
  include("top.html"); 
  require_once('init_connection.php');
- 
+
 ?>
 
 <?php
@@ -99,7 +99,10 @@
     <?php
         }
     }else{
-        //TODO Write to Database
+        
+        global $dbase;
+        $time_stamp = date("Y-m-d H:i:s");
+
     ?>
 
     <p>
