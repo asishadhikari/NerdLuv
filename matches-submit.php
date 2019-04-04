@@ -6,6 +6,10 @@ require_once('init_connection.php');
 $given_name = $_GET['name'];
 global $dbase;
 
+if(!$dbase){
+	print("Not Connected!!");
+}
+
 $uid = ''; 
 $age = '';
 $gender = '';
