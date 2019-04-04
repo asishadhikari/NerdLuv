@@ -19,7 +19,7 @@ $max_seek_age = '';
 $fav_os = '';
 
 	//query dbase
-$stmt = "SELECT * FROM users where name = '".$given_name."';";
+$stmt = "SELECT * FROM users where name = 'Ashish';";
 $matches = mysqli_query($dbase, $stmt);
 print(count($matches));
 
