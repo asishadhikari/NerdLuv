@@ -51,20 +51,7 @@ $candidate = array();
 
 $stmt = "SELECT users.name AS name, gender, age, personalities.name AS personality, fav_os.name as os FROM users, personalities, fav_os, seeking_age WHERE users.id = personalities.user_id = fav_os.user_id = seeking_age.user_id AND gender = '".$seeking_gender."' AND age >= ".$min_seek_age." AND age <= ".$max_seek_age." AND fav_os = '".$fav_os."';";
 
-print ($stmt);
-
-/*
-
-
-
-
-
-
-
-
-
 $query = mysqli_query($dbase, $stmt);
-
 if ($query->num_rows > 0) {
 	?>
 	<strong>Matches for <?= $_GET['name'] ?></strong><br>
@@ -100,6 +87,5 @@ if ($query->num_rows > 0) {
 	<?php	
 }
 
-*/
 include('bottom.html');
 ?>
