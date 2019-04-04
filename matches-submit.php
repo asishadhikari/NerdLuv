@@ -97,17 +97,19 @@ if ($query->num_rows > 0) {
 						</ul>
 					</div>
 				</div>
-
+<?php
 			}
 		}
-
+?>
 	</div>
 
-
+<?php
 }else{
+?>
 	<div>
 	<p> No match is found.</p>
 	</div>
+<?php
 }
 include('bottom.html');
 ?>
