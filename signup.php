@@ -21,7 +21,9 @@
             <input type="text" name="age" size="6" maxlength="2"><br>
 
             <strong class="column">Personality Type:</strong>
-            <input type="text" name="persona_type" size="6" maxlength="4"><br>
+            <input type="text" name="persona_type" size="6" maxlength="4">
+            <a href="http://www.humanmetrics.com/cgi-win/jtypes2.asp">Don't know your type?</a>):
+            <br>
 
             <strong class="column">Favorite OS:</strong>
             <select name="fav_os">
