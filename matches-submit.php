@@ -23,7 +23,7 @@ $gender = $record["gender"];
 $age = (int)$record["age"];
 
 
-print(" uid ".$uid." gender ".$gender." age".$age);
+//print(" uid ".$uid." gender ".$gender." age".$age);
 
 
 
