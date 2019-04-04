@@ -99,10 +99,9 @@ if ($query->num_rows > 0) {
 <?php
 			}
 		}
-print("nok...");
 ?>
 	</div>
-
+<div>Hahhaha</div>
 <?php
 }else{
 print("ok...");
