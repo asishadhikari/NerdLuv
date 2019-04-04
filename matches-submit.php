@@ -105,7 +105,9 @@ if ($query->num_rows > 0) {
 	<?php
 }else{
 	?>
+	<div>
 	<p> No match is found.</p>
+	</div>
 	<?php	
 }
 
