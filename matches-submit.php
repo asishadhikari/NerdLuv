@@ -72,9 +72,7 @@ $stmt .= "and seeking_age.min_age <= " . $age . " ";
 $stmt .= "and seeking_age.max_age >= " . $age . " ";
 $stmt .= "and fav_os.name = '" . $fav_os . "'; ";
 
-
-
-
+$query = mysqli_query($dbase, $stmt);
 
 
 ?>
