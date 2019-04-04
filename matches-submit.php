@@ -19,9 +19,8 @@ $max_seek_age = '';
 $fav_os = '';
 
 	//query dbase
-$stmt = "SELECT * FROM users where name = 'Ashish';";
+$stmt = "SELECT * FROM users where name = ".$given_name.";";
 $matches = mysqli_query($dbase, $stmt);
-print(count($matches));
 
 print($matches->fetch_assoc()['gender']);
 
