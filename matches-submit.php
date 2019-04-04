@@ -83,7 +83,6 @@ if ($query->num_rows > 0) {
 			//check if a compatible personality
 			$persona_check = "/[".$persona_type."]/";
 			if (preg_match($persona_check, $record["personality"]) === 1){
-				<!--Display Matches  -->
 ?>
 				<div class="match">
 					<img src="user.jpg" alt="photo"/>
