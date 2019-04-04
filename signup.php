@@ -18,7 +18,7 @@
             <input type="radio" name="gender" value="F" checked>Female<br>
 
             <strong class="column">Age:</strong>
-            <input type="text" name="age" size="6" maxlength="2"><br>
+            <input type="number" name="age" size="6" maxlength="2"><br>
 
             <strong class="column">Personality Type:</strong>
             <input type="text" name="persona_type" size="6" maxlength="4">
@@ -33,8 +33,8 @@
             </select><br>
 
             <strong class="column">Seeking age:</strong>
-            <input type="text" name="min_seek_age" size="6" maxlength="2" placeholder="min"> to
-            <input type="text" name="max_seek_age" size="6" maxlength="2" placeholder="max"><br>
+            <input type="number" name="min_seek_age" size="6" maxlength="2" placeholder="min"> to
+            <input type="number" name="max_seek_age" size="6" maxlength="2" placeholder="max"><br>
 
             <input type="submit" value="Sign Up">
 
