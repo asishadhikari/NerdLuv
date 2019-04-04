@@ -47,8 +47,11 @@ $max_seek_age = (int)$seek_age["max_age"];
 
 //Since gender is submitted with radio, not input validating here
 $seeking_gender =  (strcmp($gender,'M')==0 ? 'F' : 'M');
+$candidate = array();
 
-print($seeking_gender);
+$stmt = "SELECT users.name AS name, gender, age, personalities.name AS personality, fav_os.name as os FROM users, personalities, fav_os, seeking_age WHERE users.id = personalities.user_id = fav_os.user_id = seeking_age.user_id AND gender = ".$seeking_gender." AND age >= ".$min_seek_age." AND age <= ".$max_seek_age." AND fav_os = "$fav_os;
+
+print ($stmt);
 
 /*
 
@@ -59,9 +62,6 @@ print($seeking_gender);
 
 
 
-$candidate = array();
-
-$stmt = "SELECT users.name AS name, gender, age, personalities.name AS personality, fav_os.name as os FROM users, personalities, fav_os, seeking_age WHERE users.id = personalities.user_id = fav_os.user_id = seeking_age.user_id AND gender = ".$seeking_gender." AND age >= ".$min_seek_age." AND age <= ".$max_seek_age." AND fav_os = "$fav_os;
 
 $query = mysqli_query($dbase, $stmt);
 
