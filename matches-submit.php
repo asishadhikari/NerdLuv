@@ -17,7 +17,7 @@ $persona_type = '';
 $min_seek_age = '';
 $max_seek_age = '';
 $fav_os = '';
-
+$num_matches = 0;
 	//query dbase
 $stmt = "SELECT * FROM users where name = '".$given_name."';";
 $matches = mysqli_query($dbase, $stmt);
@@ -83,6 +83,7 @@ if ($query->num_rows > 0) {
 			//check if a compatible personality
 			$persona_check = "/[".$persona_type."]/";
 			if (preg_match($persona_check, $record["personality"]) === 1){
+				$num_matches++;
 ?>
 				<div class="match">
 					<img src="user.jpg" alt="photo"/>
@@ -101,11 +102,9 @@ if ($query->num_rows > 0) {
 		}
 ?>
 	</div>
-<div>Hahhaha</div>
 <?php
-}else{
-print("ok...");
-
+}
+if($num_matches==0){
 ?>
 	<div>
 	<p> No match is found.</p>
