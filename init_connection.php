@@ -12,6 +12,6 @@ function connect_to_db() {
 	return $conn;                                                            
 }
 
-global $dbase = connect_to_db();                                  
+$dbase = connect_to_db();                                  
 
 ?>
