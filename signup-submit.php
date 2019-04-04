@@ -104,12 +104,12 @@
         $stmt = "INSERT INTO users ";
         $stmt .= "(name, gender, age, created_at) ";
         $stmt .= "VALUES (";
-        $stmt .= "'" . $user['name'] . "',";
-        $stmt .= "'" . $user['gender'] . "',";
-        $stmt .= "'" . $user['age'] . "',";
+        $stmt .= "'" . $usr['name'] . "',";
+        $stmt .= "'" . $usr['gender'] . "',";
+        $stmt .= "'" . $usr['age'] . "',";
         $stmt .= "'" . $created_at . "' ";
         $stmt .= ");";
-        print("user name is ".$user['name']);
+        print("user name is ".$usr['name']);
         //add to database
         $success_write = mysqli_query($dbase, $stmt);
 
