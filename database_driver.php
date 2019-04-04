@@ -3,8 +3,8 @@
 // Turns off any browser built-in XSS protections  
 header('X-XSS-Protection: 0');                    
                                                 
-require_once('database.php');                           
+require_once('init_connection.php');                           
 
-$db = db_connect();                                  
+$dbase = connect_to_db();                                  
                                                     
 ?>   
