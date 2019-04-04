@@ -28,4 +28,3 @@ require_once('init_connection.php');
 </div>
 
 <?php include("bottom.html"); ?>
-<!-- SELECT users.name AS name, gender, age, personalities.name AS personality, fav_os.name as os FROM users, personalities, fav_os, seeking_age WHERE users.id = personalities.user_id = fav_os.user_id = seeking_age.user_id AND gender = 'M' AND age >= 20 AND age <= 25 AND fav_os.name = 'Windows';  -->

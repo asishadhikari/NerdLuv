@@ -49,11 +49,28 @@ $max_seek_age = (int)$seek_age["max_age"];
 $seeking_gender =  (strcmp($gender,'M')==0 ? 'F' : 'M');
 $candidate = array();
 
-$stmt = "SELECT users.name AS name, gender, age, personalities.name AS personality, ";
+/*$stmt = "SELECT users.name AS name, gender, age, personalities.name AS personality, ";
 $stmt.= "fav_os.name as os FROM users, personalities, fav_os, seeking_age ";
-$stmt.= "WHERE users.id = personalities.user_id = fav_os.user_id = seeking_age.user_id ";
+$stmt.= "WHERE users.id = personalities.user_id AND personalities.user_id = fav_os.user_id ";
+$stmt.= "AND fav_os.user_id = seeking_age.user_id ";
 $stmt.= "AND gender = '".$seeking_gender."' AND age >= ".$min_seek_age." ";
 $stmt.= "AND age <= ".$max_seek_age." AND fav_os.name = '".$fav_os."';";
+*/
+
+$stmt = "SELECT users.name, gender, age, ";
+$stmt .= "fav_os.name as os, ";
+$stmt .= "personalities.name as personality FROM users ";
+$stmt .= "JOIN fav_os ON users.id = fav_os.user_id ";
+$stmt .= "JOIN seeking_age ON users.id = seeking_age.user_id ";
+$stmt .= "JOIN personalities ON users.id = personalities.user_id ";
+$stmt .= "WHERE users.gender = ";
+$stmt .= "'" . $seeking_gender . "' ";
+$stmt .= "and users.age >= ". $min_seek_age . " ";
+$stmt .= "and users.age <= ". $max_seek_age . " ";
+$stmt .= "and seeking_age.min_age <= " . $age . " ";
+$stmt .= "and seeking_age.max_age >= " . $age . " ";
+$stmt .= "and fav_os.name = '" . $fav_os . "'; ";
+
 
 print($stmt);
 
