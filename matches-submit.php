@@ -96,10 +96,10 @@ if (mysqli_num_rows($query) > 0) {
 						</ul>
 					</div>
 				</div>
-	
+<?php
 			}
 		}
-
+?>
 	</div>
 
 <?php
