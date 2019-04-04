@@ -22,7 +22,7 @@
 
             <strong class="column">Personality Type:</strong>
             <input type="text" name="persona_type" size="6" maxlength="4">
-            (<a href="http://www.humanmetrics.com/cgi-win/jtypes2.asp">Don't know your type?</a>):
+            (<a href="http://www.humanmetrics.com/cgi-win/jtypes2.asp">Don't know your type?</a>)
             <br>
 
             <strong class="column">Favorite OS:</strong>
