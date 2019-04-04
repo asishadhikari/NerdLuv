@@ -21,11 +21,12 @@ $fav_os = '';
 	//query dbase
 $stmt = "SELECT * FROM users where name = '".$given_name."';";
 $matches = mysqli_query($dbase, $stmt);
+$record = $matches->fetch_assoc()) 
+$uid = $record["id"];
+$gender = $record["gender"];
+$age = (int)$record["age"];
 
-print($matches->fetch_assoc()['gender']);
-
-//print(" uid ".$uid." gender ".$gender." age".$age);
-
+print($gender);
 
 
 
@@ -34,10 +35,6 @@ print($matches->fetch_assoc()['gender']);
 
 
 //not worrying about duplicates and using first result
-$record = $matches->fetch_assoc()) 
-$uid = $record["id"];
-$gender = $record["gender"];
-$age = (int)$record["age"];
 
 //obtain user's personality type
 $stmt = "SELECT name FROM personalities WHERE user_id = ".$uid;
