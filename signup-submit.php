@@ -107,7 +107,7 @@
         $stmt .= "'" . $usr['name'] . "',";
         $stmt .= "'" . $usr['gender'] . "',";
         $stmt .= "'" . $usr['age'] . "',";
-        $stmt .= "'" . $created_at . "' ";
+        $stmt .= "'" . $timestamp . "' ";
         $stmt .= ");";
         print("user name is ".$usr['name']);
         //add to database
@@ -115,7 +115,7 @@
 
         if($success_write){
             $uid = mysqli_insert_id($dbase);
-
+            
 
         }
 
