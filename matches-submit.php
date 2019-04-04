@@ -21,7 +21,8 @@ $fav_os = '';
 	//query dbase
 $stmt = "SELECT * FROM users where name = '".$given_name."';";
 $matches = mysqli_query($dbase, $stmt);
-$record = $matches->fetch_assoc()); 
+$record = mysqli_fetch_assoc($matches);
+
 $uid = $record["id"];
 $gender = $record["gender"];
 $age = (int)$record["age"];
