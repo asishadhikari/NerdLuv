@@ -75,15 +75,16 @@ $stmt .= "and fav_os.name = '" . $fav_os . "'; ";
 
 $query = mysqli_query($dbase, $stmt);
 if ($query->num_rows > 0) {
-	?>
+
+?>
 	<strong>Matches for <?= $_GET['name'] ?></strong><br>
 	<div>
-		<?php
+<?php
 		while ($record = mysqli_fetch_assoc($query)) {
 			//check if a compatible personality
 			$persona_check = "/[".$persona_type."]/";
 			if (preg_match($persona_check, $record["personality"]) === 1){
-				?>
+?>
 				<!--Display Matches  -->
 				<div class="match">
 					<img src="user.jpg" alt="photo"/>
@@ -97,19 +98,21 @@ if ($query->num_rows > 0) {
 						</ul>
 					</div>
 				</div>
-				<?php
+<?php
 			}
 		}
-		?>
+
+?>
 	</div>
-	<?php
+
+<?php
+
 }else{
-	?>
+?>
 	<div>
 	<p> No match is found.</p>
 	</div>
-	<?php	
+<?php	
 }
-
 include('bottom.html');
 ?>
