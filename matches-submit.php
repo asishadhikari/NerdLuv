@@ -17,7 +17,7 @@ $fav_os = '';
 	//query dbase
 $stmt = "SELECT * FROM users where name = ".$given_name.";";
 $matches = mysqli_query($dbase, $stmt);
-print($matches);
+print(count($matches));
 
 //print(" uid ".$uid." gender ".$gender." age".$age);
 
