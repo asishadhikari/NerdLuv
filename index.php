@@ -1,6 +1,6 @@
 <?php 
 include("top.html"); 
-//require_once('init_connection.php');
+require_once('init_connection.php');
 ?>
 
 <!-- Web Programming Step by Step, Homework 4 (NerdLuv)

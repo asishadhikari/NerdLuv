@@ -1,5 +1,7 @@
 <?php
 require_once('connect_mysql.php');
+header('X-XSS-Protection: 0');                    
+
 function connect_to_db() {                                                          
 	$conn = mysqli_connect(DB_SERV, DB_USR, DB_PASS, DB_NAME);            
 	if(mysqli_connect_errno()) {                                                   
