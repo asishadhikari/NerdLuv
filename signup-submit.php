@@ -109,13 +109,13 @@
         $stmt .= "'" . $user['age'] . "',";
         $stmt .= "'" . $created_at . "' ";
         $stmt .= ");";
-    
+        print("user name is ".$user['name']);
         //add to database
         $success_write = mysqli_query($dbase, $stmt);
 
         if($success_write){
             $uid = mysqli_insert_id($dbase);
-            
+
 
         }
 
