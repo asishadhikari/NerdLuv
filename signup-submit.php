@@ -144,7 +144,7 @@
             $stmt .= "'" . $uid . "' ";
             $stmt .= ");";
 
-            mysql_query($dbase, $stmt);
+            mysqli_query($dbase, $stmt);
 
         }
 
