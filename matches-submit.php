@@ -89,11 +89,11 @@ if ($query->num_rows > 0) {
 					<img src="user.jpg" alt="photo"/>
 					<div>
 						<ul>
-							<li><p><?= $row["name"] ?></p></li>
-							<li><strong>gender:</strong> <?= $row["gender"] ?></li>
-							<li><strong> age:</strong> <?= $row["age"] ?> </li>
-							<li><strong> type:</strong> <?= $row["personality"] ?> </li>
-							<li><strong> OS:</strong> <?= $row["os"] ?></li>
+							<li><p><?= $record["name"] ?></p></li>
+							<li><strong>gender:</strong> <?= $record["gender"] ?></li>
+							<li><strong> age:</strong> <?= $record["age"] ?> </li>
+							<li><strong> type:</strong> <?= $record["personality"] ?> </li>
+							<li><strong> OS:</strong> <?= $record["os"] ?></li>
 						</ul>
 					</div>
 				</div>
