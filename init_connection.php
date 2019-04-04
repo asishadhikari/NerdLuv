@@ -2,7 +2,7 @@
 require_once('connect_mysql.php');
 
 function connect_to_db() {                                                          
-	//$conn = mysqli_connect(DB_SERV, DB_USR, DB_PASS, DB_NAME);            
+	$conn = mysqli_connect(DB_SRV, DB_USR, DB_PASS, DB_NAME);            
 	if(mysqli_connect_errno()) {                                                   
 		$err = "Failed to initiate database connection. ";                                       
 		$err .= mysqli_connect_error();                                              
@@ -13,11 +13,5 @@ function connect_to_db() {
 }
 
 $dbase = connect_to_db();                                  
-
-if($dbase){
-	echo("Connected!!!");
-}else{
-	echo("Not connected!");
-}
 
 ?>
