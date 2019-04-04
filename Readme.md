@@ -2,28 +2,28 @@
 # PHP/MySql project : NerdLuv
 A multi-page "online dating" site that processes HTML forms with PHP while storing/retrieving data from mysql database.
 ## signup.php:
-   [x] A  header  logo,  a formto  create  a  new account, and footer notes/images.
-   [x] Name must have 16 alphabets separataed by space and first letter capitalised
-   [x] Gender is a radio button with female checked by default
-   [x] Age is 6 letter wide text box where only 2 characters are allowed
-   [x] only Keirsey personality type allowed and label is hyperlinked
-   [x] Favorite OS has Windows selected by default and has MACOSX and linux as Options
-   [x] Seeking age must have 2 digit input box
+   - [X] A  header  logo,  a formto  create  a  new account, and footer notes/images.
+   - [X] Name must have 16 alphabets separataed by space and first letter capitalised
+   - [X] Gender is a radio button with female checked by default
+   - [X] Age is 6 letter wide text box where only 2 characters are allowed
+   - [X] only Keirsey personality type allowed and label is hyperlinked
+   - [X] Favorite OS has Windows selected by default and has MACOSX and linux as Options
+   - [X] Seeking age must have 2 digit input box
 
 ## signup-submit.php:
-[x] form should submitits data as a  POST to signup-submit.php
-[x] Resulting page has usual header and fotter and the text "login to see your matches"
-[x] All data must be validated, in case of error, errors must be displayed
+- [X] form should submitits data as a  POST to signup-submit.php
+- [X] Resulting page has usual header and fotter and the text "login to see your matches"
+- [X] All data must be validated, in case of error, errors must be displayed
 
 ## matches.php:
-[x] has 16 character input box that sends a GET request to matches-submit.php
+- [X] has 16 character input box that sends a GET request to matches-submit.php
 
 ## matches-submit.php:
-[x] If opposite gender, compatible age, same favourite OS, at least one personlity type common, found show the matches
-[x] If none found, display "No match is found"
+- [X] If opposite gender, compatible age, same favourite OS, at least one personlity type common, found show the matches
+- [X] If none found, display "No match is found"
 
 ## Database features:
-[x] Contains four tables (users, personalities, fav_os, seeking_age)
+- [X] Contains four tables (users, personalities, fav_os, seeking_age)
 
 ## To Setup:
 Following steps are required to deploy the project "as is " in your server
