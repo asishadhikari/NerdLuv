@@ -33,3 +33,4 @@ Following steps are required to deploy the project "as is " in your server
 1. grant permissions to ```USER1``` for the database as ```GRANT ALL PRIVILEGES ON NERDLUV.* TO 'USER1'@'localhost';```
 2. import the **NERDLUV.sql** file into database as ```SOURCE NERDLUV.sql```
 1. NerdLuv is all set for deployment at your own discretion!
+1. ***optional*** you can also import a readily available dataset. Instead of importing **NERDLUV.sql**, import **data.sql**
